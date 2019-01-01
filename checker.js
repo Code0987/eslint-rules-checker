@@ -21,9 +21,13 @@ function resolveConfigFile(input) {
       }
       return path.join(process.cwd(), input);
     }
-    return require(path.join(path.join(process.cwd(), input), 'package.json')).main;
+    let main = require(path.join(path.join(process.cwd(), input), 'package.json')).main;
+    let file = path.join(path.join(process.cwd(), input), main);
+    return file;
   }
-  return require(path.join(process.cwd(), 'package.json')).main;
+  let main = require(path.join(process.cwd(), 'package.json')).main;
+  let file = path.join(process.cwd(), main);
+  return file;
 }
 
 function getConfig(input) {
@@ -45,9 +49,10 @@ function check(ops) {
   ops = Object.assign({}, {
     input: null,
     output: null,
+    removed: true,
+    deprecated: true,
     current: true,
     unused: true,
-    deprecated: true,
     print: true
   }, ops);
 
@@ -57,6 +62,10 @@ function check(ops) {
 
   let currentRuleNames = Object.keys(config.rules);
   let allRuleNames = [...allRules.keys()];
+
+  const removedRuleNames =
+    currentRuleNames.filter(x =>
+      !allRules.get(x));
 
   const deprecatedRuleNames =
     currentRuleNames.filter(x =>
@@ -73,24 +82,31 @@ function check(ops) {
     + "\n---"
     ;
 
-  if (ops.current) {
-    report += "\n\nCurrent"
-      + "\nTotal: " + currentRuleNames.length
-      + "\n" + currentRuleNames.join("  \n")
-      ;
-  }
-
-  if (ops.deprecated) {
-    report += "\n\nUnused"
-      + "\nTotal: " + unusedRuleNames.length
-      + "\n" + unusedRuleNames.join("  \n")
+  if (ops.removed) {
+    report += "\n\nRemoved"
+      + "\nTotal: " + removedRuleNames.length
+      + "\n" + removedRuleNames.join(", ")
       ;
   }
 
   if (ops.deprecated) {
     report += "\n\nDeprecated"
       + "\nTotal: " + deprecatedRuleNames.length
-      + "\n" + deprecatedRuleNames.join("  \n")
+      + "\n" + deprecatedRuleNames.join(", ")
+      ;
+  }
+
+  if (ops.current) {
+    report += "\n\nCurrent"
+      + "\nTotal: " + currentRuleNames.length
+      + "\n" + currentRuleNames.join(", ")
+      ;
+  }
+
+  if (ops.unused) {
+    report += "\n\nUnused"
+      + "\nTotal: " + unusedRuleNames.length
+      + "\n" + unusedRuleNames.join(", ")
       ;
   }
 

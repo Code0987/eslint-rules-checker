@@ -10,6 +10,14 @@ const argv = require('yargs')
   .nargs('o', 1)
   .describe('o', 'output file')
 
+  .boolean('r')
+  .alias('r', 'removed')
+  .describe('r', 'removed rules')
+
+  .boolean('d')
+  .alias('d', 'deprecated')
+  .describe('d', 'deprecated rules')
+
   .boolean('c')
   .alias('c', 'current')
   .describe('c', 'current rules')
@@ -17,10 +25,6 @@ const argv = require('yargs')
   .boolean('u')
   .alias('u', 'unused')
   .describe('u', 'unused rules')
-
-  .boolean('d')
-  .alias('d', 'deprecated')
-  .describe('d', 'deprecated rules')
 
   .boolean('p')
   .alias('p', 'print')

@@ -2,7 +2,7 @@
   "name": "eslint-rules-checker",
   "main": "index.js",
   "scripts": {
-    "example": "node index.js -i eslintrc.json -o eslint-report.txt -p false",
+    "sample": "node index.js -i ./sample/.eslintrc -o ./sample/eslint-report.txt",
     "lint": "eslint . --config=eslintrc.json",
     "test": "mocha tests/*-tests.js"
   },

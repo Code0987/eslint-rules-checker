@@ -1,0 +1,7 @@
+{
+  "name": "eslint-example",
+  "main": "main.js",
+  "devDependencies": {
+    "eslint": "^1.0.0"
+  }
+}
