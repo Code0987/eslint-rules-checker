@@ -1,9 +1,10 @@
 {
   "name": "eslint-rules-checker",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "checker.js",
+  "bin": "cli.js",
   "scripts": {
-    "sample": "node index.js -i ./sample/.eslintrc -o ./sample/eslint-report.txt",
+    "sample": "node cli.js -i ./sample/.eslintrc -o ./sample/eslint-report.txt",
     "lint": "eslint . --config=eslintrc.json",
     "test": "mocha tests/*-tests.js"
   },

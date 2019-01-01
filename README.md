@@ -18,7 +18,7 @@ npm run sample
 
 or 
 
-node index.js -i ./sample/.eslintrc -o ./sample/eslint-report.txt 
+node cli.js -i ./sample/.eslintrc -o ./sample/eslint-report.txt 
 ```
 
 The output will be logged to console and a file `sample/eslint-report.txt`.
@@ -27,5 +27,5 @@ The sample is updated with already run output at `sample/eslint-report.txt`.
 ### Use (local)
 
 ```
-node index.js -help
+node cli.js -help
 ```
