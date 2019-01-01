@@ -1,5 +1,6 @@
 {
   "name": "eslint-rules-checker",
+  "version": "0.0.1",
   "main": "index.js",
   "scripts": {
     "sample": "node index.js -i ./sample/.eslintrc -o ./sample/eslint-report.txt",
