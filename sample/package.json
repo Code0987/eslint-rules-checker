@@ -3,5 +3,8 @@
   "main": "main.js",
   "devDependencies": {
     "eslint": "^1.0.0"
+  },
+  "dependencies": {
+    "eslint-rules-checker": "github:Code0987/eslint-rules-checker"
   }
 }
