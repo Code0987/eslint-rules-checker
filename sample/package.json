@@ -2,7 +2,7 @@
   "name": "eslint-example",
   "main": "main.js",
   "devDependencies": {
-    "eslint": "7.7.0"
+    "eslint": "7.32.0"
   },
   "dependencies": {
     "eslint-rules-checker": "github:Code0987/eslint-rules-checker"
